@@ -5,8 +5,7 @@ const delay = process.env.DELAY || 10000
 setInterval(() => {
     https.get(url, res => {
         const headerDate = res.headers && res.headers.date ? res.headers.date : 'no response date';
-        console.log('Status Code:', res.statusCode);
-        console.log('Date in Response header:', headerDate);
+        console.log(`{request:"${res.headers['x-request-id']}" status:${res.statusCode}}`);
         }).on('error', err => {
         console.log('Error: ', err.message);
     });
